@@ -19,15 +19,15 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running basic checks'
-                sh 'test -f index.html'
-                sh 'grep -q "Hello from Jenkins CI/CD" index.html'
+                sh 'test -f demo'
+                sh 'grep -q "Hello from Jenkins CI/CD" demo'
             }
         }
 
         stage('Package') {
             steps {
                 echo 'Packaging the application'
-                sh 'tar -czf website.tar.gz index.html'
+                sh 'tar -czf website.tar.gz demo'
                 archiveArtifacts artifacts: 'website.tar.gz',
                                  fingerprint: true
             }
